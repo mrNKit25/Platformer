@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 8088234484682996351}
   - component: {fileID: 8088234484682996350}
   - component: {fileID: 8088234484682996345}
+  - component: {fileID: 4458407000394650474}
   m_Layer: 0
   m_Name: Potion - Jump
   m_TagString: Untagged
@@ -163,3 +164,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   potionType: 1
   potionModAmount: 250
+--- !u!114 &4458407000394650474
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8088234484682996344}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c7a0356c1a7cd43b0aa1863b31f09566, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  floatingMax: 1.25
+  floatingDir: 0.1
