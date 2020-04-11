@@ -20,10 +20,12 @@ public class PotionController : MonoBehaviour
             if(potionType == PotionType.Jump)
             {
                 collision.gameObject.GetComponent<PlayerMovement>().hasJumpPotion = true;
+                collision.gameObject.GetComponent<PlayerMovement>().hasSpeedPotion = false;
             }
             else if(potionType == PotionType.Speed)
             {
                 collision.gameObject.GetComponent<PlayerMovement>().hasSpeedPotion = true;
+                collision.gameObject.GetComponent<PlayerMovement>().hasJumpPotion = false;
             }
 
             collision.gameObject.GetComponent<PlayerMovement>().potionModAmount = potionModAmount;

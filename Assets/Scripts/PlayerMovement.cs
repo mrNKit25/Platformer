@@ -21,10 +21,12 @@ public class PlayerMovement : MonoBehaviour
     bool jumpFlag = false;
     bool jump = false;
 
+    public float m_SpeedForceMod = 1f;
+
     // Update is called once per frame
     void Update()
     {
-        horizontalMove = Input.GetAxisRaw("Horizontal") * runSpeed;
+        horizontalMove = Input.GetAxisRaw("Horizontal") * runSpeed * m_SpeedForceMod;
 
         animator.SetFloat("Speed", Mathf.Abs(horizontalMove));
 
@@ -57,12 +59,23 @@ public class PlayerMovement : MonoBehaviour
         {
             controller.m_JumpForceMod = potionModAmount;
             potionTimeCur += Time.fixedDeltaTime;
+            hasSpeedPotion = false;
+            m_SpeedForceMod = 1;
+        }
+        else if(hasSpeedPotion && potionTimeCur < potionTimeMax)
+        {
+            m_SpeedForceMod = potionModAmount;
+            potionTimeCur += Time.fixedDeltaTime;
+            hasJumpPotion = false;
+            controller.m_JumpForceMod = 0;
         }
         else
         {
             potionTimeCur = 0f;
             controller.m_JumpForceMod = 0;
+            m_SpeedForceMod = 1;
             hasJumpPotion = false;
+            hasSpeedPotion = false;
         }
 
         controller.Move(horizontalMove * Time.fixedDeltaTime, false, jump);
@@ -71,5 +84,7 @@ public class PlayerMovement : MonoBehaviour
         {
             jumpFlag = true;
         }
+
+        
     }
 }
